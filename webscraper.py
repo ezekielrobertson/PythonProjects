@@ -1,0 +1,1 @@
+#learn how to scrape the web for data desired, i.e. streaming platform streams and use it to create a cool chart

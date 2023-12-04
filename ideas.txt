@@ -1,0 +1,5 @@
+maybe a chatbot?
+maybe an expense tracker?
+maybe a job listing aggregator?
+maybe a text editor?
+maybe a ranked choice voting simulator? ***
