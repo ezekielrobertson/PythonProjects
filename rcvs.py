@@ -4,7 +4,13 @@
 
 from collections import defaultdict
 def main():
-#ballot will be received from parsing through the google sheets with the data collection
+    def parse_csv(file):
+        
+
+
+        #here, ballots will be the list of lists, where the lists are an ordered ranking of persons votes
+        return ballots
+    #ballot will be received from parsing through the google sheets with the data collection
     def ranked_choice_voting(ballots):
         vote_count = defaultdict(int)
         while True:
@@ -36,6 +42,7 @@ def main():
             #once we're down to one candidate, we have a winner 
             if len(vote_count) == 1:
                 return list[vote_count.keys()[0]]
+    #test ballots, ideally will import some csv file and create this from there
     ballots = [
     ["Candidate A", "Candidate B", "Candidate C"],
     ["Candidate B", "Candidate C", "Candidate A"],
