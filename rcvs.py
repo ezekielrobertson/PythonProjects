@@ -44,11 +44,11 @@ def main():
                 return list[vote_count.keys()[0]]
     #test ballots, ideally will import some csv file and create this from there
     ballots = [
-    ["Candidate A", "Candidate B", "Candidate C"],
-    ["Candidate B", "Candidate C", "Candidate A"],
-    ["Candidate C", "Candidate A", "Candidate B"],
-    ["Candidate A", "Candidate B", "Candidate C"],
-    ["Candidate B", "Candidate A", "Candidate C"],
+    ["WN", "DAD", "BoC", "RR", "AoHF"], #row 2
+    ["DAD", "RR", "AoHF", "BoC", "WN"], #row 3
+    ["RR", "DAD", "WN", "BoC", "AoHF"], #row 4
+    ["AoHF", "BoC", "DAD", "RR", "WN"], #row 5
+    ["RR", "AoHF", "DAD", "WN", "BoC"], #row 6
     ]
     print(ranked_choice_voting(ballots))
 
