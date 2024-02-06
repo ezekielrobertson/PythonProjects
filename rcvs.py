@@ -3,16 +3,17 @@
 #how many votes and in what way they are ranked, and how to generate a winner, deal with ties, etc.
 
 from collections import defaultdict
+import pandas as pd
 def main():
-    def parse_csv(file):
-        
+    # def parse_csv(file):
+    #     df = pd.read_csv(file)
 
-
-        #here, ballots will be the list of lists, where the lists are an ordered ranking of persons votes
-        return ballots
-    #ballot will be received from parsing through the google sheets with the data collection
+    #     #here, ballots will be the list of lists, where the lists are an ordered ranking of persons votes
+    #     return df
+    # #ballot will be received from parsing through the google sheets with the data collection
     def ranked_choice_voting(ballots):
         vote_count = defaultdict(int)
+        book_list = ballots[0]
         while True:
         #this will count the current round's votes
             for ballot in ballots:
@@ -24,7 +25,12 @@ def main():
                 #this is the winner if they reach a majority of of the vote count
                     return candidate
             #now is the time to elimnate the person with the least amount of votes 
-            min_votes = min(vote_count.values())
+            elim_list = []
+            for i in range(len(ballot)):
+                if ballot[i] not in book_list:
+                    elim_list+=ballot[i]
+                else:
+                    min_votes = min(vote_count.values())
             candidate_to_eliminate = [candidate for candidate, count in vote_count.items() if count == min_votes]
             if len(candidate_to_eliminate) == len(vote_count):
                 return None
@@ -50,7 +56,7 @@ def main():
     ["AoHF", "BoC", "DAD", "RR", "WN"], #row 5
     ["RR", "AoHF", "DAD", "WN", "BoC"], #row 6
     ]
-    print(ranked_choice_voting(ballots))
+    print(ranked_choice_voting(ballots)) 
 
 
 
