@@ -11,6 +11,8 @@ def main():
     #     #here, ballots will be the list of lists, where the lists are an ordered ranking of persons votes
     #     return df
     # #ballot will be received from parsing through the google sheets with the data collection
+    '''
+    ATTEMPT 1
     def ranked_choice_voting(ballots):
         vote_count = defaultdict(int)
         book_list = ballots[0]
@@ -49,6 +51,29 @@ def main():
             if len(vote_count) == 1:
                 return list[vote_count.keys()[0]]
     #test ballots, ideally will import some csv file and create this from there
+    '''
+    def rcv(ballots):
+        ballots_copy = ballots[:]
+        vote_count = defaultdict(int)
+        book_list = ballots_copy[0]
+        while True:    
+            for ballot in ballots_copy:
+                vote_count[ballot[0]]+=1
+            books_not_in_dict = [ballot for ballot in book_list if ballot not in vote_count]
+            if len(books_not_in_dict) == 1:
+                for ballot in ballots_copy:
+                    if books_not_in_dict in ballot:
+                        ballot.remove(books_not_in_dict)
+            else:
+                #need to take all of the items in this list and add them to the dictionary, start from ballot[1]
+                #because they already failed the first round, and see if they have less or equvalent counts.
+                count_dict = defaultdict(int)
+                for ballot in ballots_copy:
+                    
+                    
+            return ballots_copy
+
+
     ballots = [
     ["WN", "DAD", "BoC", "RR", "AoHF"], #row 2
     ["DAD", "RR", "AoHF", "BoC", "WN"], #row 3
@@ -56,8 +81,7 @@ def main():
     ["AoHF", "BoC", "DAD", "RR", "WN"], #row 5
     ["RR", "AoHF", "DAD", "WN", "BoC"], #row 6
     ]
-    print(ranked_choice_voting(ballots)) 
-
+    print(rcv(ballots))
 
 
 if __name__ == '__main__':
